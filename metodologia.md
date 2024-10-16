@@ -27,11 +27,12 @@ Essas condicionais devem ser avaliados de acordo com cada classe de uso do solo.
 
 O Heat Mitigation Index (HMI) e o Cooling Capacity Index (CCI) são conceitos usados em análises ambientais para avaliar a capacidade de uma área em mitigar o calor e, embora relacionados, possuem enfoques diferentes. Ambos podem ser utilizados em modelos como o InVEST (Integrated Valuation of Ecosystem Services and Tradeoffs), mas desempenham papéis distintos no contexto de mitigação de ilhas de calor. Vamos explorar as diferenças entre eles:
 1. Cooling Capacity Index (CCI)
+![alt text](image.png)
 
     1.1. Definição: O Cooling Capacity Index (CCI) mede a capacidade inerente de uma área (geralmente coberturas vegetais) em reduzir ou mitigar o aumento da temperatura ambiente. 
     O CCI está relacionado a características físicas de uso do solo que contribuem para o resfriamento, como áreas verdes, parques, florestas urbanas, superfícies de água, etc
 
-    $CCi = 0.6 . shade + 0.2 .albedo + 0.2 . ETI$
+    <center> CCi = 0.6 . shade + 0.2 .albedo + 0.2 . ETI </center>
 
     1.2. Objetivo: Avaliar a potencialidade natural de uma área para reduzir o calor, sem levar em consideração necessariamente o efeito real na temperatura
 
@@ -41,6 +42,26 @@ O Heat Mitigation Index (HMI) e o Cooling Capacity Index (CCI) são conceitos us
         Tipo de solo (solo permeável vs. pavimentado)
 
     1.4. Aplicação: O CCI é útil para identificar áreas com alto potencial de resfriamento natural e pode ser usado para guiar decisões sobre onde manter ou melhorar infraestrutura verde em áreas urbanas.
+    ![alt text](image-1.png)
+
+O gráfico apresenta a dispersão (scatter plot) com uma regressão linear entre duas variáveis:
+
+Eixo X: Representa o Average Cooling Capacity (avg_cc).
+
+Eixo Y: Representa o Average Temperature Increase (avg_tmp_an).
+
+Principais informações do gráfico:
+
+R² (Coeficiente de Determinação): O valor de 0.990 indica que o modelo de regressão linear ajusta-se muito bem aos dados. Isso significa que 99% da variação na variável dependente (aumento médio de temperatura) pode ser explicada pela variável independente (capacidade de resfriamento médio). Em outras palavras, há uma forte correlação entre essas duas variáveis.
+
+Coeficiente angular (slope b): O valor do coeficiente angular é -6.564, indicando que para cada aumento unitário em avg_cc, o aumento médio da temperatura (avg_tmp_an) diminui em aproximadamente 6.564 unidades. Isso reforça a ideia de que há uma correlação negativa entre as duas variáveis: à medida que a capacidade de resfriamento aumenta, o aumento médio da temperatura diminui.
+
+Significância dos coeficientes (P-value): Os valores de P-value (0.000) indicam que tanto a constante quanto o coeficiente angular são estatisticamente significativos, ou seja, existe uma relação real entre avg_cc e avg_tmp_an.
+
+Interpretação geral:
+
+Há uma relação inversamente proporcional forte entre a Cooling Capacity e o aumento de temperatura. Áreas com maior capacitação de resfriamento estão associadas a um menor aumento de temperatura, o que é esperado em termos de mitigação de ilhas de calor.
+O gráfico também sugere que o modelo linear é uma boa representação dessa relação, dado o alto valor de R² e a linearidade clara entre as duas variáveis.
 
 2. Heat Mitigation Index (HMI)
 
@@ -85,8 +106,10 @@ Como recurso para classificação, foi utilizado o vetor de polígonos dos edif�
 Visto a escala dos pixels da ortofoto (0.08m), foi necessário reduzir a qualidade para pelo menos 1m, para tornar possível a execução do K-means para a ortofoto toda de uma vez, visto que a segmentação da imagem, classificando uma por uma provocava desconexão entre as classes de uma imagem para outra.
 
 #### Fluxograma do processo
+##### Simulação de HMI a partir de propostas
 ![alt text](<NTU - Dashboard Canela - Quadro 3.jpg>)
 
+##### Definição de classes e atributos
 ![alt text](<NTU - Dashboard Canela - Quadro 4.jpg>)
 
 

@@ -29,22 +29,24 @@ class SpatialAnalyst:
         lisa = Moran_Local_BV(self.gdf['lag'], ind_var, w)
         return moran, lisa
     
-    def linear_regression(self, dep_var: str, ind_var: str):
-        ind_var_reshaped = self.gdf[ind_var]
-        dep_var_val = self.gdf[[dep_var]]
-        lin_model = LinearRegression().fit(dep_var_val, ind_var_reshaped)
-        pred = lin_model.predict(dep_var_val)
-        score = r2_score(y_true=ind_var_reshaped, y_pred=pred)
+    def linear_regression(self, ind_var: str, dep_var: str) -> float:
+        X = self.gdf[[ind_var]]
+        y = self.gdf[dep_var]
+        lin_model = LinearRegression().fit(X, y)
+        pred = lin_model.predict(X)
+        score = r2_score(y_true=y, y_pred=pred)
+        slope = lin_model.coef_[0]
+        intercept = lin_model.intercept_
 
         plt.figure(figsize=(8, 6))
-        plt.scatter(ind_var_reshaped, dep_var_val, color='blue', label=ind_var, s=50)
-        plt.plot(ind_var_reshaped, pred, color='red', label='regression', linewidth=0.5)
+        plt.scatter(self.gdf[ind_var], self.gdf[dep_var], color='blue', label=ind_var, s=50)
+        plt.plot(self.gdf[ind_var], pred, color='red', label='regression', linewidth=0.8)
         plt.xlabel(ind_var)
         plt.ylabel(dep_var)
-        plt.title(f'Linear Regression Model (R^2 = {score:.2f})')
+        plt.title(f'Linear Regression Model (R^2 = {score:.3f})')
         plt.legend()
         plt.show()
-        return pred, score
+        return score, slope, intercept
     
     def _select_weight(self, weight_type: WeightTypes) -> WeightClasses:
         if weight_type not in self._w_cache:

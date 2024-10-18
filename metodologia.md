@@ -88,12 +88,18 @@ Diferenças Principais:
 * Escopo:
     O CCI é frequentemente mais utilizado em avaliações ecossistêmicas e na infraestrutura verde urbana, enquanto o HMI pode ser usado em análises mais abrangentes de impacto climático em áreas urbanas.
 
+    ![alt text](cc_hm-1.png)
+
 Resumo:
 
 * **CCI**: Mede o potencial de resfriamento de uma área baseado em suas características.
 * **HMI**: Avalia o impacto real de mitigação de calor e o efeito que áreas com alto CCI estão gerando no ambiente em termos de temperatura.
 
 Esses dois índices, quando combinados, são poderosos para embasar políticas urbanas que busquem reduzir o efeito das ilhas de calor em áreas metropolitanas, orientando decisões sobre preservação e criação de infraestruturas verdes. O modelo InVEST, especificamente, utiliza esses conceitos para ajudar a quantificar os serviços ecossistêmicos prestados por diferentes tipos de uso do solo em contextos de planejamento urbano.
+
+O resultado deve ser uma intersecção entre ambos os indicadores, utilizando o CCI em escala de quadras e/ou lotes anível de simulação, enquanto o HMI serve como aspecto de desenho atual da situação de ilha de calor na cidade de Canela.
+
+A proposta é estabelecer um EBA para pixels de ilha de calor, algo como um ECUA (Equivalent Cooling Urban Area) ou AUER (Área Urbana Equivalente de Resfriamento)
 
 #### NDVI
 #### Classificação não-supervisionada de Uso do Solo
@@ -114,6 +120,8 @@ Visto a escala dos pixels da ortofoto (0.08m), foi necessário reduzir a qualida
 
 
 #### Resultados obtidos
+
+* Configuração Atual - 
 
 
 

@@ -30,7 +30,7 @@ class SpatialAnalyst:
         lisa = Moran_Local_BV(self.gdf['lag'], ind_var, w)
         return moran, lisa
     
-    def linear_regression(self, ind_var: str, dep_var: str) -> tuple[float, float, float]:
+    def linear_regression(self, ind_var: str, dep_var: str, linear: bool = True) -> tuple[float, float, float]:
         """Gera regressão linear entre 2 colunas do GeoDataFrame
 
         Args:
@@ -42,7 +42,10 @@ class SpatialAnalyst:
         """
         X = self.gdf[[ind_var]]
         y = self.gdf[dep_var]
-        lin_model = LinearRegression().fit(X, y)
+        if linear:
+            lin_model = LinearRegression().fit(X, y)
+        else:
+            lin_model = PoissonRegressor().fit(X, y)
         pred = lin_model.predict(X)
         score = r2_score(y_true=y, y_pred=pred)
         slope: float = lin_model.coef_[0]
@@ -65,12 +68,12 @@ class SpatialAnalyst:
     def _shapiro_test(self, col: str) -> float:
         return shapiro(col).statistic
     
-    def shapiro_plot(self, col: str) -> None:
+    def monte_carlo_plot(self, col: str) -> None:
         _, ax = plt.subplots(figsize=(8, 5))
         length = len(self.gdf)
         ref = monte_carlo_test(self.gdf[col], norm.rvs, self._shapiro_test, alternative='less')
         null_dist = ref.null_distribution
-        bins = np.linspace(min(null_dist), 1, length)
+        bins = np.linspace(min(null_dist), 1, length + 10)
         ax.hist(ref.null_distribution, density=True, bins=bins)
         ax.set_title('Shapiro-Wilk Test Null Distribution \n'
                     f'(Monte Carlo Approximation, {length} Observations)')
@@ -78,12 +81,25 @@ class SpatialAnalyst:
         ax.set_ylabel('probability_denisty')
         annotation = (f'p-value={ref.pvalue:.6f}\n (highlighted area)')
         props = {'facecolor': 'black', 'width': 1, 'headwidth': 5, 'headlength': 8}
-        ax.annotate(annotation, (0.9, 0.2), (0.92, 5.25), arrowprops=props)
         i_ext = np.where(bins <= ref.statistic)[0]
         for i in i_ext:
             ax.patches[i].set_color('C1')
+
+        if i_ext.size > 0:
+            # Midpoint of the highlighted area for the x-coordinate
+            x_annotate = (bins[i_ext[0]] + bins[i_ext[-1]]) / 2
+            # Slightly above the tallest highlighted bin for the y-coordinate
+            max_density = max(p.get_height() for i, p in enumerate(ax.patches) if i in i_ext)
+            y_annotate = max_density + 0.05 * max_density  # Add some padding above the tallest bar
+
+            # Set arrow properties
+            props = {'facecolor': 'black', 'width': 1, 'headwidth': 5, 'headlength': 8}
+            ax.annotate(annotation, xy=(x_annotate, y_annotate), 
+                        xytext=(x_annotate, y_annotate + 0.1 * max_density), 
+                        arrowprops=props, ha='center')
+
         plt.xlim(min(null_dist), max(null_dist))
-        plt.ylim(0, length)
+        plt.ylim(0, ax.get_ylim()[1])
         plt.show()
     
     def _select_weight(self, weight_type: WeightTypes) -> WeightClasses:

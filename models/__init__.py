@@ -14,7 +14,7 @@ from libpysal.weights import Queen, Rook, KNN, DistanceBand, lag_spatial
 from scipy.stats import monte_carlo_test, norm, shapiro
 
 from typing import Literal, Union
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, PoissonRegressor
 from sklearn.metrics import r2_score
 
 WeightTypes = Literal['queen', 'rook', 'knn', 'distance']

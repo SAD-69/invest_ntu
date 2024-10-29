@@ -36,6 +36,7 @@ class SpatialAnalyst:
         Args:
             ind_var (str): Variável independente (X)
             dep_var (str): Variável dependente (y)
+            linear (bool): Regressão linear (True) ou de poisson (False). Defaults to True
 
         Returns:
             score, slope e intercept (float) : Valor de correlação, declividade e intercepção

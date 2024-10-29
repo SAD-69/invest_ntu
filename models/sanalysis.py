@@ -4,7 +4,7 @@ from libpysal.weights import Queen, Rook, KNN, DistanceBand, lag_spatial
 from geopandas import GeoDataFrame, read_file
 from splot.esda import plot_moran, plot_local_autocorrelation
 
-plt.style.use('ggplot')
+plt.style.use('fast')
 
 path = r'C:/Users/NTU-USER/Documents/ntu/landlord/teste_miguel/uv/uv_py/uv_2_concept.gpkg'
 gdf: GeoDataFrame = read_file(path, layer='lotes_cc_hmi_median')

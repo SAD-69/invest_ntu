@@ -1,7 +1,7 @@
 from models import *
 import statsmodels.api as sm
 
-plt.style.use('ggplot')
+plt.style.use('seaborn-v0_8')
 
 class SpatialAnalyst:
     def __init__(self, vector: str):
@@ -61,6 +61,30 @@ class SpatialAnalyst:
         plt.legend()
         plt.show()
         return score, slope, intercept, p_value
+    
+    def _shapiro_test(self, col: str) -> float:
+        return shapiro(col).statistic
+    
+    def shapiro_plot(self, col: str) -> None:
+        _, ax = plt.subplots(figsize=(8, 5))
+        length = len(self.gdf)
+        ref = monte_carlo_test(self.gdf[col], norm.rvs, self._shapiro_test, alternative='less')
+        null_dist = ref.null_distribution
+        bins = np.linspace(min(null_dist), 1, length)
+        ax.hist(ref.null_distribution, density=True, bins=bins)
+        ax.set_title('Shapiro-Wilk Test Null Distribution \n'
+                    f'(Monte Carlo Approximation, {length} Observations)')
+        ax.set_xlabel('statistic')
+        ax.set_ylabel('probability_denisty')
+        annotation = (f'p-value={ref.pvalue:.6f}\n (highlighted area)')
+        props = {'facecolor': 'black', 'width': 1, 'headwidth': 5, 'headlength': 8}
+        ax.annotate(annotation, (0.9, 0.2), (0.92, 5.25), arrowprops=props)
+        i_ext = np.where(bins <= ref.statistic)[0]
+        for i in i_ext:
+            ax.patches[i].set_color('C1')
+        plt.xlim(min(null_dist), max(null_dist))
+        plt.ylim(0, length)
+        plt.show()
     
     def _select_weight(self, weight_type: WeightTypes) -> WeightClasses:
         if weight_type not in self._w_cache:

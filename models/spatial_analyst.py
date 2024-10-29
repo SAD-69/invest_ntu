@@ -1,4 +1,5 @@
 from models import *
+import statsmodels.api as sm
 
 plt.style.use('ggplot')
 
@@ -29,24 +30,37 @@ class SpatialAnalyst:
         lisa = Moran_Local_BV(self.gdf['lag'], ind_var, w)
         return moran, lisa
     
-    def linear_regression(self, ind_var: str, dep_var: str) -> float:
+    def linear_regression(self, ind_var: str, dep_var: str) -> tuple[float, float, float]:
+        """Gera regressão linear entre 2 colunas do GeoDataFrame
+
+        Args:
+            ind_var (str): Variável independente (X)
+            dep_var (str): Variável dependente (y)
+
+        Returns:
+            score, slope e intercept (float) : Valor de correlação, declividade e intercepção
+        """
         X = self.gdf[[ind_var]]
         y = self.gdf[dep_var]
         lin_model = LinearRegression().fit(X, y)
         pred = lin_model.predict(X)
         score = r2_score(y_true=y, y_pred=pred)
-        slope = lin_model.coef_[0]
+        slope: float = lin_model.coef_[0]
         intercept = lin_model.intercept_
+
+        X_constant = sm.add_constant(X)
+        sm_model = sm.OLS(y, X_constant).fit()
+        p_value = sm_model.pvalues[1]
 
         plt.figure(figsize=(8, 6))
         plt.scatter(self.gdf[ind_var], self.gdf[dep_var], color='blue', label=ind_var, s=50)
         plt.plot(self.gdf[ind_var], pred, color='red', label='regression', linewidth=0.8)
         plt.xlabel(ind_var)
         plt.ylabel(dep_var)
-        plt.title(f'Linear Regression Model (R^2 = {score:.3f})')
+        plt.title(f'Linear Regression Model (R^2 = {score:.2f}, Slope = {slope:.3f}), p-value = {p_value:.3f}')
         plt.legend()
         plt.show()
-        return score, slope, intercept
+        return score, slope, intercept, p_value
     
     def _select_weight(self, weight_type: WeightTypes) -> WeightClasses:
         if weight_type not in self._w_cache:

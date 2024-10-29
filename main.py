@@ -61,11 +61,11 @@ def rasterio_clip(shapefile_path: str, raster_path: str):
             'green_area_cooling_distance': '200',
             'lulc_raster_path': f'C:\\Users\\NTU-USER\\Documents\\ntu\\landlord\\teste_miguel\\uv\\uv_py\\clipped_{uv}.tif',
             'ref_eto_raster_path': 'C:\\Users\\NTU-USER\\Documents\\ntu\\simulator_testes\\simulator_V2\\hydro_et_al.tif',
-            'results_suffix': f'uv_{uv}_v2',
-            't_air_average_radius': '500',
-            't_ref': '24',
+            'results_suffix': f'uv_{uv}_v3',
+            't_air_average_radius': '300',
+            't_ref': '16',
             'uhi_max': '3.5',
-            'workspace_dir': 'C:\\Users\\NTU-USER\\Documents\\ntu\\landlord\\teste_miguel\\uv\\uv_py',
+            'workspace_dir': 'C:\\Users\\NTU-USER\\Documents\\ntu\\landlord\\teste_miguel\\uv\\uv_py\\new_temp',
         }
         natcap.invest.urban_cooling_model.execute(args)
 

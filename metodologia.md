@@ -1,11 +1,17 @@
-# SISTEMA PARA APROVAÇÃO DE PROJETOS URBANOS EM CANELA
-#### v0.1
+# NOTA TÉCNICA PARA AVALIAÇÃO DE SUPRESSÃO VEGETAL EM ÁREAS URBANAS
+#### v0.2
+## Resumo
+Sob o contexto da ausência de critérios para avaliação da supressão vegetal em ambientes urbanos, a proposta do trabalho a seguir é descrever a metodologia e desenvolvimento de um modelo de valoração de supressão vegetal em áreas urbanas, orientado ao efeito de ilhas de calor urbana, afim de chegar estabelecer uma Área Equivalente de Biodiversidade (EBA) contextualizada na escala urbana. A proposta se baseou no modelo de Resfriamento Urbano (*Urban Cooling*) do InVEST para valoração da superfície vegetal, derivada do Índice de Mitigação de Calor (*Heat Mitigation Index - HMI*).
+ 
 ## Introdução
-Sob o contexto de uma suposta ausência de critério para compensação ambiental em ambientes urbanos, a proposta do trabalho a seguir é descrever a metodologia do desenvolvimento de um sistema para aprovação de projetos na cidade de Canela. O presente artigo busca apresentar a situação atual do trabalho corrente, servindo como recurso para consulta e atualização durante a construção do sistema.
+
+O artigo foi idealizado como parte do Plano Diretor de Canela, a fim de fornecer uma análise semelhante a aplicação da Área Equivalente de Biodiversidade (EBA), no qual a escala de análise adequa-se às UGPAs e áreas rurais ou não consolidadas. Seguindo a mesma linha, a proposta do artigo é oferecer um modelo de análise de áreas equivalentes de vegetação aplicadas às UVs, escala de análise para o meio urbano de Canela. 
+
 
 ## Materiais e métodos
 ### Indicadores Ambientais
 #### Heat Mitigation Index e Cooling Capacity Index 
+Os benefícios de
 O Heat Mitigation Index (HMI) do modelo InVEST (Integrated Valuation of Ecosystem Services and Tradeoffs) é uma ferramenta que avalia a capacidade das áreas verdes e do solo em mitigar o calor urbano. Esse índice é útil para o planejamento urbano sustentável, ao identificar áreas de maior necessidade de vegetação para redução de ilhas de calor. 
 O indicador do HMI é um valor entre 0 a 1, estando os valores positivos atrelados a magnitude do impacto em cada pixel relativo às massas vegetadas próximas, e negativos o quanto mais distantes dessas massas vegetadas.
 Os parâmetros para execução do modelo dependem de 4 dados de entrada, sendo o mapa de uso do solo em formato TIF, evapotranspiração (TIF), área de interesse (SHP) e tabela biofísica (CSV), onde serão determinados os pesos de cada classe de uso do solo para cada condicional, sendo elas:
@@ -101,7 +107,11 @@ O resultado deve ser uma intersecção entre ambos os indicadores, utilizando o 
 
 A proposta é estabelecer um EBA para pixels de ilha de calor, algo como um ECUA (Equivalent Cooling Urban Area) ou AUER (Área Urbana Equivalente de Resfriamento)
 
-#### NDVI
+* ADENDO 
+In plain words, if the amount of green spaces surrounding a pixel (GA) is less than 2 ha, the value of 𝐻𝑀 on the pixel equals
+CC (Eq. 5c), assuming little cooling effect outside the park other than through air mixing due to atmospheric turbulence
+(defined by rmix). The threshold size of 2 ha is obtained from the literature (Bowler et al., 2010; also see Discussion)
+
 #### Classificação não-supervisionada de Uso do Solo
 Visto os problemas de classificação generalizada do MapBiomas, optou-se pela classificação do uso e superfície do solo a partir da Ortofoto disponível na plataforma [SIGWEB](https://canela.ctmgeo.com.br) de Canela.
 
@@ -128,3 +138,10 @@ Visto a escala dos pixels da ortofoto (0.08m), foi necessário reduzir a qualida
 #### Problemas observados e limitações
 
 #### Aprimoramentos previstos
+
+
+
+##### Referências
+
+https://egusphere.copernicus.org/preprints/2023/egusphere-2023-928/egusphere-2023-928.pdf. Acesso 30/10/2024;
+

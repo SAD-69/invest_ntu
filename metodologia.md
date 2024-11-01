@@ -11,9 +11,26 @@ O artigo foi idealizado como parte do Plano Diretor de Canela, a fim de fornecer
 ## Materiais e métodos
 ### Indicadores Ambientais
 #### Heat Mitigation Index e Cooling Capacity Index 
-Os benefícios de
+Os benefícios da arborização urbana permeiam desde aspectos da saúde física e mental à questão paisagística e estética da cidade. Contudo esses elementos, embora de grande valor para o meio urbano, são dados que não apresentam uma forma de fácil mensuração estatística devido a natureza de sua forma, qualitativa e indireta. A proposta busca levantar medições possíveis para que possamos elaborar melhores decisões para compensações que permeiem as estratégias do No Net Loss.
+
+| Serviço Ecossistêmico                    | Descrição                                                                                                                                                          |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Benefícios Estéticos                     | A presença de árvores e parques aumenta a percepção de beleza das pessoas e, assim, sua felicidade. Esse benefício tem valor monetário; por exemplo, casas com árvores na frente valem significativamente mais. |
+| Recreação                                | Áreas verdes são frequentemente usadas para recreação — desde caminhadas até prática de esportes e momentos de relaxamento.                                        |
+| Saúde Física                             | Áreas verdes são utilizadas para recreação, o que contribui para a melhoria da saúde das pessoas.                                                                  |
+| Saúde Mental                             | Pesquisas mostram que a interação com a natureza diminui o estresse e aumenta a concentração.                                                                      |
+| Valor Espiritual e Sentimento de Lugar   | O que seria de Nova York sem o Central Park? Áreas verdes muitas vezes desempenham um papel importante na vida espiritual das pessoas e na apreciação de sua cidade. |
+| Biodiversidade                           | A presença de árvores e parques ajuda a fornecer um habitat para a biodiversidade.                                                                                |
+| Prevenção de Erosão                      | Árvores e outras vegetações reduzem a erosão ao estabilizar o solo.                                                                                                |
+| Mitigação de Águas Pluviais              | Árvores e áreas úmidas, sejam naturais ou construídas, ajudam a aumentar a infiltração de águas pluviais e a filtrar poluentes dessas águas.                       |
+| Mitigação de Risco de Inundação          | Ao desacelerar o movimento das águas pluviais a jusante, árvores e áreas úmidas reduzem o risco de inundações locais. Em planícies de inundação, habitats naturais oferecem um espaço para as águas da enchente, retardando seu fluxo a jusante. |
+| Proteção Costeira                        | Ao longo das costas, habitats naturais, como florestas de manguezais, oferecem proteção contra a elevação do nível do mar.                                         |
+| Purificação do Ar (partículas, ozônio)   | O foco deste relatório: árvores reduzem as concentrações de poluição do ar.                                                                                        |
+| Sombra e Mitigação de Ondas de Calor     | O foco deste relatório: árvores reduzem as temperaturas ambientes.                                                                                                |
+
+
 O Heat Mitigation Index (HMI) do modelo InVEST (Integrated Valuation of Ecosystem Services and Tradeoffs) é uma ferramenta que avalia a capacidade das áreas verdes e do solo em mitigar o calor urbano. Esse índice é útil para o planejamento urbano sustentável, ao identificar áreas de maior necessidade de vegetação para redução de ilhas de calor. 
-O indicador do HMI é um valor entre 0 a 1, estando os valores positivos atrelados a magnitude do impacto em cada pixel relativo às massas vegetadas próximas, e negativos o quanto mais distantes dessas massas vegetadas.
+O indicador do HMI é um valor que varia de 0 a 1, estando os valores positivos atrelados a magnitude do impacto em cada pixel relativo às massas vegetadas próximas, e negativos o quanto mais distantes dessas massas vegetadas.
 Os parâmetros para execução do modelo dependem de 4 dados de entrada, sendo o mapa de uso do solo em formato TIF, evapotranspiração (TIF), área de interesse (SHP) e tabela biofísica (CSV), onde serão determinados os pesos de cada classe de uso do solo para cada condicional, sendo elas:
 * **lucode**: *int* – Código da classe de uso do solo
 * **kc**: *float* – Coeficiente de colheita (razão de evapotranspiração para o tipo de vegetação)
@@ -48,7 +65,7 @@ O Heat Mitigation Index (HMI) e o Cooling Capacity Index (CCI) são conceitos us
         Tipo de solo (solo permeável vs. pavimentado)
 
     1.4. Aplicação: O CCI é útil para identificar áreas com alto potencial de resfriamento natural e pode ser usado para guiar decisões sobre onde manter ou melhorar infraestrutura verde em áreas urbanas.
-    ![alt text](image-1.png)
+    ![alt text](avg_cc_avg_tmp_an_v2.png)
 
 O gráfico apresenta a dispersão (scatter plot) com uma regressão linear entre duas variáveis:
 

@@ -25,7 +25,7 @@ Os benefícios da arborização urbana permeiam desde aspectos da saúde física
 | Mitigação de Águas Pluviais              | Árvores e áreas úmidas, sejam naturais ou construídas, ajudam a aumentar a infiltração de águas pluviais e a filtrar poluentes dessas águas.                       |
 | Mitigação de Risco de Inundação          | Ao desacelerar o movimento das águas pluviais a jusante, árvores e áreas úmidas reduzem o risco de inundações locais. Em planícies de inundação, habitats naturais oferecem um espaço para as águas da enchente, retardando seu fluxo a jusante. |
 | Proteção Costeira                        | Ao longo das costas, habitats naturais, como florestas de manguezais, oferecem proteção contra a elevação do nível do mar.                                         |
-| Purificação do Ar (partículas, ozônio)   | O foco deste relatório: árvores reduzem as concentrações de poluição do ar.                                                                                        |
+| Purificação do Ar (partículas, ozônio)   | Árvores reduzem as concentrações de poluição do ar.                                                                                        |
 | Sombra e Mitigação de Ondas de Calor     | O foco deste relatório: árvores reduzem as temperaturas ambientes.                                                                                                |
 
 
@@ -144,6 +144,27 @@ Visto a escala dos pixels da ortofoto (0.08m), foi necessário reduzir a qualida
 
 ##### Definição de classes e atributos
 ![alt text](<NTU - Dashboard Canela - Quadro 4.jpg>)
+
+#### Prova de Conceito
+Como evidência amostral, isolamos a UV 37, referente a UV do Parque do Lago, para que fosse possível estimar valores de temperatura e potencial de mitigação de calor com diferentes propostas de compensação vegetal. Como é uma área com um parque pouco arborizado, a proposta buscou estabelecer 3 cenários - sem compensação, compensação vegetal concentrada no parque e compensação vegetal distribuída sobre as vias do quadrante da UV. A ideia da simulação é poder estimar possibilidades de compensação, servindo como uma ferramenta de inteligência para os setores de planejamento e meio ambiente possam usufruir para melhor tomada de decisão.
+
+* Tempearatura anual média - 18,4 ºC (CCI *mean* = 0.274 = 5ha)
+* Temperatura anual média simulada sem compensação - 18,7 ºC (CCI *mean* = 0.242 = 5ha)
+![alt text](cc_compare_destruct_v2.png)
+
+* Tempearatura anual média - 18,4 ºC (CCI *mean* = 0.274 = 5ha)
+* Temperatura anual média simulada compensação concentrada em praça - 18,5 ºC (CCI *mean* = 0.274 = 5ha)
+![alt text](cc_compare_v2.png)
+
+* Tempearatura anual média - 18,4 ºC (CCI *mean* = 0.274 = 5ha)
+* Temperatura anual média simulada compensação dispersa em vias - 18,6 ºC (CCI *mean* = 0.271 = 6ha)
+![alt text](cc_compare_vias_verdes.png)
+
+
+* Indicadores de Mitigação de Calor nas diferentes formas de compensação vegetal
+![alt text](hmi_compare_4.png)
+
+
 
 
 #### Resultados obtidos

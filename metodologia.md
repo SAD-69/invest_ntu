@@ -164,6 +164,12 @@ Como evidência amostral, isolamos a UV 37, referente a UV do Parque do Lago, pa
 * Indicadores de Mitigação de Calor nas diferentes formas de compensação vegetal
 ![alt text](hmi_compare_4.png)
 
+| Situação | Temperatura média anual | CCI médio | Soma CCI | HMI médio |
+| ----------- | ----------------------- | --------- | -------- | --------- |
+| Atual | 18,4 ºC | 0,274 | 2176 | 0,289 |
+| Desmatamento sem compensação |  18,7 ºC | 0,242 | 1921 | 0, 241 |
+| Compensação concentrada no parque | 18,5 ºC | 0,274 | 2176 | 0,272 |
+| Compensação dispersa nas vias | 18,6 ºC | 0,271 | 2152 | 0,282 |
 
 
 

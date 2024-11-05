@@ -3,9 +3,10 @@ import statsmodels.api as sm
 
 plt.style.use('seaborn-v0_8')
 
+
 class SpatialAnalyst:
-    def __init__(self, vector: str):
-        self.gdf = read_file(vector)
+    def __init__(self, vector: str, layer: str = None):
+        self.gdf = read_geo(vector, layer)
         self._gcol = self._get_geom_col(self.gdf)
         self._w_cache = {}
 

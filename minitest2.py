@@ -17,7 +17,11 @@ def align_rasters(src_path1, src_path2, resampling=Resampling.nearest):
     return data1, data2
 
 # Align rasters to have the same shape and mask
-data1, data2 = align_rasters("cc_bbox.tif", "temp_superficial.tif")
+data1, data2 = align_rasters(
+    r"C:\Users\NTU-USER\Documents\ntu\simulator_testes\simulator_V2\hmi_bbox.tif",
+    # r"c:\Users\NTU-USER\Downloads\isla_calor\isla_calor\hm_uv_37_energy_savings_vias_verdes_v2.tif"    
+    r"C:\Users\NTU-USER\Downloads\LST_Median_Sentinel2_2023_bbox.tif"
+    )
 
 # Mask the arrays to remove nodata pixels from both rasters
 common_mask = data1.mask | data2.mask

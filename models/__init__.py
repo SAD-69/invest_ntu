@@ -5,7 +5,7 @@ import rasterio
 
 from rasterio.transform import from_bounds
 from rasterio.features import rasterize
-from geopandas import GeoDataFrame, read_file
+from geopandas import GeoDataFrame, read_file, read_parquet
 from pandas import Series
 from esda.moran import Moran, Moran_Local, Moran_BV, Moran_Local_BV
 from splot.esda import plot_moran, plot_local_autocorrelation
@@ -20,3 +20,16 @@ from sklearn.metrics import r2_score
 WeightTypes = Literal['queen', 'rook', 'knn', 'distance']
 WeightClasses = Union[Queen, Rook, KNN, DistanceBand]
 
+
+def read_geo(path: str, layer: str = None) -> GeoDataFrame:
+    gdal_drivers = {
+        'shp': lambda: read_file(path),
+        'geojson': lambda: read_file(path),
+        'parquet': lambda: read_parquet(path),
+        'gpkg': lambda: read_file(path, layer=layer)
+    }
+    for k, v in gdal_drivers.items():
+        if path.endswith(f'.{k}'):
+            return v()
+        
+    raise ValueError("Unsupported file format. Please use a supported file extension (shp, geojson, parquet, gpkg).")

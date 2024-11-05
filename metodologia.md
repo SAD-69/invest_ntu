@@ -148,28 +148,29 @@ Visto a escala dos pixels da ortofoto (0.08m), foi necessário reduzir a qualida
 #### Prova de Conceito
 Como evidência amostral, isolamos a UV 37, referente a UV do Parque do Lago, para que fosse possível estimar valores de temperatura e potencial de mitigação de calor com diferentes propostas de compensação vegetal. Como é uma área com um parque pouco arborizado, a proposta buscou estabelecer 3 cenários - sem compensação, compensação vegetal concentrada no parque e compensação vegetal distribuída sobre as vias do quadrante da UV. A ideia da simulação é poder estimar possibilidades de compensação, servindo como uma ferramenta de inteligência para os setores de planejamento e meio ambiente possam usufruir para melhor tomada de decisão.
 
-* Tempearatura anual média - 18,4 ºC (CCI *mean* = 0.274 = 5ha)
-* Temperatura anual média simulada sem compensação - 18,7 ºC (CCI *mean* = 0.242 = 5ha)
+* Cenário sem compensação de supressão vegetal (5ha de desmatamento = -255 CCI)
+
 ![alt text](cc_compare_destruct_v2.png)
 
-* Tempearatura anual média - 18,4 ºC (CCI *mean* = 0.274 = 5ha)
-* Temperatura anual média simulada compensação concentrada em praça - 18,5 ºC (CCI *mean* = 0.274 = 5ha)
+* Cenário com compensação de supressão vegetal concentrada no Parque do Lago (5ha de reflorestamento = + 255 CCI)
+
 ![alt text](cc_compare_v2.png)
 
-* Tempearatura anual média - 18,4 ºC (CCI *mean* = 0.274 = 5ha)
-* Temperatura anual média simulada compensação dispersa em vias - 18,6 ºC (CCI *mean* = 0.271 = 6ha)
+* Cenário com compensação de supressão vegetal distribuída sobre as vias (6ha de reflorestamento = + 231 CCI)
+
 ![alt text](cc_compare_vias_verdes.png)
 
 
 * Indicadores de Mitigação de Calor nas diferentes formas de compensação vegetal
+
 ![alt text](hmi_compare_4.png)
 
-| Situação | Temperatura média anual | CCI médio | Soma CCI | HMI médio |
-| ----------- | ----------------------- | --------- | -------- | --------- |
-| Atual | 18,4 ºC | 0,274 | 2176 | 0,289 |
-| Desmatamento sem compensação |  18,7 ºC | 0,242 | 1921 | 0, 241 |
-| Compensação concentrada no parque | 18,5 ºC | 0,274 | 2176 | 0,272 |
-| Compensação dispersa nas vias | 18,6 ºC | 0,271 | 2152 | 0,282 |
+| <center>Situação | <center>Temperatura<span style="font-size: 0.65em"> média anual | <center>CCI<span style="font-size: 0.65em">*média* | <center>CCI<span style="font-size: 0.65em">*soma* | <center>Débito | <center>Crédito | <center>HMI<span style="font-size: 0.65em">*média* |
+| ----------- | ----------------------- | --------- | -------- | --------- | -------- | --------- |
+| <center>Atual | <center>18,4 ºC | <center>0,274 | <center>2176 | <center>0 | <center>0 | <center>0,289 |
+| <center>Desmatamento sem compensação |  <center>18,7 ºC | <center>0,242 | <center>1921 | <center>-255 | <center>0 | <center>0,241 |
+| <center>Compensação concentrada no parque | <center>18,5 ºC | <center>0,274 | <center>2176 | <center>-255 | <center>+255 | <center>0,272 |
+| <center>Compensação dispersa nas vias | <center>18,6 ºC | <center>0,271 | <center>2152 | <center>-255 | <center>+231 | <center>0,282 |
 
 
 

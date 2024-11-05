@@ -27,6 +27,8 @@ share/python-wheels/
 MANIFEST
 */.vscode
 
+*.parquet
+
 *.csv
 *.
 *.qmd
